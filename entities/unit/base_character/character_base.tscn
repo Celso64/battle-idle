@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://crgqc627w3bkp"]
+
+[ext_resource type="Script" uid="uid://d0cocnho0olww" path="res://entities/unit/base_character/character_base.gd" id="1_s6cyp"]
+[ext_resource type="Texture2D" uid="uid://cx4ccwwbho5lf" path="res://sprites/cube.png" id="2_s6cyp"]
+[ext_resource type="Script" uid="uid://b1lbpq4luyvss" path="res://share/state_machine/state_machine.gd" id="3_jt3yx"]
+[ext_resource type="Script" uid="uid://fxbxe0du8p27" path="res://entities/unit/base_character/states/idle.gd" id="4_whuh1"]
+[ext_resource type="Script" uid="uid://1bkd73kk3unn" path="res://entities/unit/base_character/states/walk.gd" id="5_whuh1"]
+[ext_resource type="Script" uid="uid://drawihyfoji3f" path="res://entities/unit/base_character/states/attack.gd" id="6_bybcf"]
+[ext_resource type="Script" uid="uid://dvpoyll7qklaa" path="res://entities/unit/base_character/states/alert.gd" id="7_in6fu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bybcf"]
+load_path = "res://.godot/imported/exclamacion.png-2a1c4e9681b1444821e8ee9383136cb1.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6cyp"]
+size = Vector2(28, 28)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6owhk"]
+radius = 150.0
+
+[node name="character" type="Area2D" unique_id=1564839755]
+script = ExtResource("1_s6cyp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=854338569]
+texture = ExtResource("2_s6cyp")
+
+[node name="emote" type="Sprite2D" parent="." unique_id=2076162735]
+position = Vector2(0, -48)
+scale = Vector2(0.15, 0.15)
+texture = SubResource("CompressedTexture2D_bybcf")
+
+[node name="colision" type="CollisionShape2D" parent="." unique_id=1804674094]
+shape = SubResource("RectangleShape2D_s6cyp")
+
+[node name="frente" type="RayCast2D" parent="." unique_id=395960421]
+
+[node name="deteccion_area" type="Area2D" parent="." unique_id=318225912]
+
+[node name="deteccion" type="CollisionShape2D" parent="deteccion_area" unique_id=148145888]
+shape = SubResource("CircleShape2D_6owhk")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1867223896]
+script = ExtResource("3_jt3yx")
+metadata/_custom_type_script = "uid://b1lbpq4luyvss"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1477417445]
+script = ExtResource("4_whuh1")
+metadata/_custom_type_script = "uid://pescvqs1877j"
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=180647315]
+script = ExtResource("5_whuh1")
+metadata/_custom_type_script = "uid://pescvqs1877j"
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=727166774]
+script = ExtResource("6_bybcf")
+metadata/_custom_type_script = "uid://pescvqs1877j"
+
+[node name="Alert" type="Node" parent="StateMachine" unique_id=1980176650]
+script = ExtResource("7_in6fu")
+metadata/_custom_type_script = "uid://kjdvqhxsqby6"
