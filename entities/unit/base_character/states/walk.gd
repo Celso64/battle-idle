@@ -1,9 +1,10 @@
 extends UnitState
 
-func update(_delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	var local_direction = unidad.frente.target_position.normalized()
 	var global_direction = local_direction.rotated(unidad.frente.rotation)
-	unidad.position += global_direction * unidad.speed * _delta
+	unidad.move_and_collide(global_direction * unidad.speed * _delta)
+	#unidad.position += global_direction * unidad.speed * _delta
 
 func exit() -> void:
 	var local_direction = unidad.frente.target_position.normalized()

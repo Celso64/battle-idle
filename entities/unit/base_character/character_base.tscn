@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://1bkd73kk3unn" path="res://entities/unit/base_character/states/walk.gd" id="5_whuh1"]
 [ext_resource type="Script" uid="uid://drawihyfoji3f" path="res://entities/unit/base_character/states/attack.gd" id="6_bybcf"]
 [ext_resource type="Script" uid="uid://dvpoyll7qklaa" path="res://entities/unit/base_character/states/alert.gd" id="7_in6fu"]
+[ext_resource type="Script" uid="uid://dqjip1rxcvh8k" path="res://entities/unit/base_character/states/run.gd" id="8_86osb"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bybcf"]
 load_path = "res://.godot/imported/exclamacion.png-2a1c4e9681b1444821e8ee9383136cb1.ctex"
@@ -17,7 +18,10 @@ size = Vector2(28, 28)
 [sub_resource type="CircleShape2D" id="CircleShape2D_6owhk"]
 radius = 150.0
 
-[node name="character" type="Area2D" unique_id=1564839755]
+[node name="character" type="RigidBody2D" unique_id=1804874054]
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 0.0
 script = ExtResource("1_s6cyp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=854338569]
@@ -34,6 +38,7 @@ shape = SubResource("RectangleShape2D_s6cyp")
 [node name="frente" type="RayCast2D" parent="." unique_id=395960421]
 
 [node name="deteccion_area" type="Area2D" parent="." unique_id=318225912]
+collision_mask = 3
 
 [node name="deteccion" type="CollisionShape2D" parent="deteccion_area" unique_id=148145888]
 shape = SubResource("CircleShape2D_6owhk")
@@ -56,4 +61,8 @@ metadata/_custom_type_script = "uid://pescvqs1877j"
 
 [node name="Alert" type="Node" parent="StateMachine" unique_id=1980176650]
 script = ExtResource("7_in6fu")
+metadata/_custom_type_script = "uid://kjdvqhxsqby6"
+
+[node name="Run" type="Node" parent="StateMachine" unique_id=1382160628]
+script = ExtResource("8_86osb")
 metadata/_custom_type_script = "uid://kjdvqhxsqby6"

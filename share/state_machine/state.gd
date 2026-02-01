@@ -1,3 +1,4 @@
+## Representa un estado generico.
 class_name State extends Node
 
 ## Emitted when the state finishes and wants to transition to another state.

@@ -5,7 +5,7 @@ const colores: Array[Color] = [Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW]
 
 func _ready() -> void:	
 	for i in range(2):
-		var unidad_nueva: Area2D = unidad_escena.instantiate()
+		var unidad_nueva: RigidBody2D = unidad_escena.instantiate()
 		add_child(unidad_nueva)
 		var nueva_pos: Vector2 = Vector2(100+500*(i+1), 256 + 150 * i)
 		var nueva_mirada: float = deg_to_rad(90+180*(i-1))
